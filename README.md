@@ -10,7 +10,7 @@ docker-compose build
 docker-compose up -d
 ```
 
-<br>Confirm four containers are up and runnin.
+<br>Confirm four containers are up and running.
 ```
 $ docker ps
 CONTAINER ID   IMAGE                                     COMMAND        CREATED         STATUS        PORTS     NAMES
