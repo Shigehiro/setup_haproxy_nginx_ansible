@@ -3,7 +3,7 @@
   block:
   - name: curl {{ smoke_test_haproxy_vip }}
     ansible.builtin.command:
-      cmd: curl "{{ smoke_test_haproxy_vip }}"
+      cmd: curl "{{ smoke_test_haproxy_vip }}/{{ smoke_test_file }}"
     register: result
   - name: debug
     ansible.builtin.debug:
