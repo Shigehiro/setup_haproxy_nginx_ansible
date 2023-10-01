@@ -1,0 +1,14 @@
+frontend_list:
+- frontend_name: web_proxy
+  frontend_bind: '*:80'
+  backend_name: nginx
+
+backend_list:
+- backend_name: nginx
+  balance_mode: roundrobin
+  server_list:
+  - name: web01
+    ip: 172.20.6.30:80
+  - name: web02
+    ip: 172.20.6.31:80
+

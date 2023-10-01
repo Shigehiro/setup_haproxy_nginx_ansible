@@ -1,0 +1,28 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - import_role:
+      name: setup_all_nodes
+
+- hosts: haproxy_group
+  gather_facts: false
+  tasks:
+  - import_role:
+      name: setup_haproxy_group
+
+- hosts: web_group
+  gather_facts: true
+  tasks:
+  - import_role:
+      name: setup_web_group
+
+- hosts: client_group
+  gather_facts: false
+  tags:
+  - never
+  - smoke_test
+  tasks:
+  - import_role:
+      name: smoke_test
+  

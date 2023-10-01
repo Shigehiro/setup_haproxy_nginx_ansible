@@ -1,0 +1,10 @@
+---
+# tasks file for smoke_test
+- name: set fact
+  ansible.builtin.set_fact:
+    web_count: "{{ groups['web_group'] | length }}"
+
+- name: smoke test
+  ansible.builtin.include_tasks: smoke_test.yml
+  loop: "{{ range(0, web_count | int ) | list }}"
+

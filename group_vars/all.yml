@@ -1,0 +1,5 @@
+all_rpm_list:
+- which
+- curl
+- wget
+- iproute

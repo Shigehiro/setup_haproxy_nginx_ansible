@@ -1,0 +1,22 @@
+---
+# tasks file for setup_haproxy_group
+- name: make sure haproxy is installed
+  ansible.builtin.dnf:
+    name: haproxy
+    state: present
+
+- name: copy haproxy.cfg
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: '0600'
+    backup: yes
+  notify: restart_haproxy
+
+- name: enable service haproxy
+  ansible.builtin.systemd:
+    name: haproxy
+    state: started
+    enabled: true

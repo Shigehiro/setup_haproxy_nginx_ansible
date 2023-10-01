@@ -1,0 +1,94 @@
+version: '3'
+services:
+  b-client01:
+    container_name: b-client01
+    hostname: b-client01
+    build:
+      context: ./Docker_build/Rocky8_container
+      dockerfile: Dockerfile
+    tty: true
+    cap_add:
+      - AUDIT_CONTROL  
+      - AUDIT_READ
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+    tmpfs:
+      - /run
+    networks:
+      b-rocky8_net:
+        ipv4_address: 172.20.6.10
+    extra_hosts:
+      - "b-haproxy01:172.20.6.20"
+      - "b-web01:172.20.6.30"
+      - "b-web02:172.20.6.31"
+  b-haproxy01:
+    container_name: b-haproxy01
+    hostname: b-haproxy01
+    build:
+      context: ./Docker_build/Rocky8_container
+      dockerfile: Dockerfile
+    tty: true
+    cap_add:
+      - AUDIT_CONTROL  
+      - AUDIT_READ
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+    tmpfs:
+      - /run
+    networks:
+      b-rocky8_net:
+        ipv4_address: 172.20.6.20
+    extra_hosts:
+      - "b-client01:172.20.6.10"
+      - "b-web01:172.20.6.30"
+      - "b-web02:172.20.6.31"
+  b-web01:
+    container_name: b-web01
+    hostname: b-web01
+    build:
+      context: ./Docker_build/Rocky8_container
+      dockerfile: Dockerfile
+    tty: true
+    cap_add:
+      - AUDIT_CONTROL  
+      - AUDIT_READ
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+    tmpfs:
+      - /run
+    networks:
+      b-rocky8_net:
+        ipv4_address: 172.20.6.30
+    extra_hosts:
+      - "b-client01:172.20.6.10"
+      - "b-haproxy01:172.20.6.20"
+      - "b-web02:172.20.6.31"
+  b-web02:
+    container_name: b-web02
+    hostname: b-web02
+    build:
+      context: ./Docker_build/Rocky8_container
+      dockerfile: Dockerfile
+    tty: true
+    cap_add:
+      - AUDIT_CONTROL  
+      - AUDIT_READ
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+    tmpfs:
+      - /run
+    networks:
+      b-rocky8_net:
+        ipv4_address: 172.20.6.31
+    extra_hosts:
+      - "b-client01:172.20.6.10"
+      - "b-haproxy01:172.20.6.20"
+      - "b-web01:172.20.6.30"
+networks:
+  b-rocky8_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.6.0/24"
+

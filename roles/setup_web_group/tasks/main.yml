@@ -1,0 +1,22 @@
+---
+# tasks file for setup_web_group
+- name: install nginx
+  ansible.builtin.dnf:
+    name: nginx
+    state: present
+
+- name: ensure nginx is up and running
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: set fact
+  ansible.builtin.set_fact:
+    hostname: "{{ ansible_facts['hostname'] }}"
+
+- name: write hostname in {{ smoke_test_file }}
+  ansible.builtin.copy:
+    content: "{{ hostname }}"
+    dest: "/usr/share/nginx/html/{{ smoke_test_file }}"
+

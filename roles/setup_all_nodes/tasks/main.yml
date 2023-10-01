@@ -1,0 +1,8 @@
+---
+# tasks file for setup_all_nodes
+- name: install rpms
+  ansible.builtin.dnf:
+    name:
+    - "{{ item }}"
+    state: present
+  loop: "{{ all_rpm_list }}"
