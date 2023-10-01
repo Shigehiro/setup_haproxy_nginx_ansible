@@ -1,5 +1,6 @@
 all_rpm_list:
 - which
 - curl
-- wget
 - iproute
+
+smoke_test_file: smoke_test.html
