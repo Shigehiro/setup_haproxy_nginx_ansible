@@ -1,7 +1,7 @@
 ---
 - name: smoke test
   block:
-  - name: curl {{ smoke_test_haproxy_vip }}
+  - name: curl to haproxy VIP {{ smoke_test_haproxy_vip }}
     ansible.builtin.command:
       cmd: curl "{{ smoke_test_haproxy_vip }}/{{ smoke_test_file }}"
     register: result
