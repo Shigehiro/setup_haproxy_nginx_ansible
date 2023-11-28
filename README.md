@@ -2,7 +2,7 @@
 
 ## Description
 
-- Launch four containers with docker-compose
+- Launch four init containers with docker-compose
 - Configure a haproxy, two nginx and a client for an web access with ansible
 
 [![asciicast](https://asciinema.org/a/cXfM7CwFWokrmDk0X8NTm7wdi.png)](https://asciinema.org/a/cXfM7CwFWokrmDk0X8NTm7wdi)
