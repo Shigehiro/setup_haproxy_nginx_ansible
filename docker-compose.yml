@@ -6,12 +6,13 @@ services:
     build:
       context: ./Docker_build/Rocky8_container
       dockerfile: Dockerfile
+    cgroup: host
     tty: true
     cap_add:
       - AUDIT_CONTROL  
       - AUDIT_READ
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw 
     tmpfs:
       - /run
     networks:
@@ -27,12 +28,13 @@ services:
     build:
       context: ./Docker_build/Rocky8_container
       dockerfile: Dockerfile
+    cgroup: host
     tty: true
     cap_add:
       - AUDIT_CONTROL  
       - AUDIT_READ
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw 
     tmpfs:
       - /run
     networks:
@@ -48,12 +50,13 @@ services:
     build:
       context: ./Docker_build/Rocky8_container
       dockerfile: Dockerfile
+    cgroup: host
     tty: true
     cap_add:
       - AUDIT_CONTROL  
       - AUDIT_READ
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw 
     tmpfs:
       - /run
     networks:
@@ -69,12 +72,13 @@ services:
     build:
       context: ./Docker_build/Rocky8_container
       dockerfile: Dockerfile
+    cgroup: host
     tty: true
     cap_add:
       - AUDIT_CONTROL  
       - AUDIT_READ
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro 
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw 
     tmpfs:
       - /run
     networks:
