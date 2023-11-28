@@ -5,9 +5,31 @@
 - Launch four containers with docker-compose
 - Configure a haproxy, two nginx and a client for an web access with ansible
 
+[![asciicast](https://asciinema.org/a/cXfM7CwFWokrmDk0X8NTm7wdi.png)](https://asciinema.org/a/cXfM7CwFWokrmDk0X8NTm7wdi)
+
+## Tested Environment
+
+```text
+# cat /etc/fedora-release 
+Fedora release 39 (Thirty Nine)
+
+# docker info |grep -E 'Server Version|Cgroup Version'
+ Server Version: 24.0.7
+ Cgroup Version: 2
+
+# docker compose version
+Docker Compose version v2.21.0
+```
+
+## Prerequisite
+
+- Install Docker Engine and Docker Compose
+- This playbook is not tested with Podman or Podman-Compose
+- Confirmed this worked on Fedora 39, CentOS Stream 9, and Rocky 9
+
 ## Usage
 
-Install required python module.
+Install required Python module.
 ```text
 cd setup_haproxy_nginx_ansible/
 ```
